@@ -1,0 +1,42 @@
+
+h3{
+	font-size: 25px;
+}
+.wrapper1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+
+.wrapper2 {
+	background-color: #F2F2F2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.wrapper3 {
+  background-color: #F2F2F2;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  width: 90%;
+  height: 70%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  overflow: scroll;
+}
+
