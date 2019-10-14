@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <?php
-            include 'config.php'
-      ?>
+      <?php include 'template/config.php'; ?>
       <title>Welcome at VERS</title>
       <link rel="stylesheet" href="./style/css/index.css">
 </head>
@@ -17,12 +15,12 @@
                         <i></i>
                   </label>
                   <div class="logo">
-                        <a href="homepage.html">VERS</a>
+                        <a href="index.php">VERS</a>
                   </div>
                   <div class="nav-wrapper">
                         <ul>
-                              <li><a href="homepage.html">Home</a></li>
-                              <li><a href="testpagina.html">Testpagina</a></li>
+                             <li><a href="homepage.html">Home</a></li>
+                             <li><a href="testpagina.html">Testpagina</a></li>
                         </ul>
                   </div>
             </nav>
@@ -31,7 +29,9 @@
             <div class="wrapper2">
                   <h3> Test pagina </h3>
                   <div class="wrapper3">
-                       
+                      <a href="./template/login.php">Login</a>
+                      <a href="./template/login.php">Login</a>
+
                   </div>
             </div>
       </div>

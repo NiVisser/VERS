@@ -16,7 +16,7 @@ body {
       height: 100vh;
       font-family: Poppins;
       font-weight: 400;
-      background: url(test.jpg);
+      background: url(../images/index.jpg);
       background-position: center;
       background-size: cover;
 }
