@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>VERS</title>
-      <link rel="stylesheet" type="text/css" href="style/master.css">
-       <link rel="stylesheet" type="text/css" href="style/homepage.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet"> 
+      <?php
+            include 'config.php'
+      ?>
+      <title>Welcome at VERS</title>
+      <link rel="stylesheet" href="./style/css/index.css">
 </head>
 <body>
       <div class="container">
@@ -19,20 +17,23 @@
                         <i></i>
                   </label>
                   <div class="logo">
-                         <a href="homepage.html">VERS</a>
+                        <a href="homepage.html">VERS</a>
                   </div>
                   <div class="nav-wrapper">
                         <ul>
                               <li><a href="homepage.html">Home</a></li>
                               <li><a href="testpagina.html">Testpagina</a></li>
-                   
                         </ul>
                   </div>
             </nav>
       </div>
-      <div class="wrapper">
-           
-      
+      <div class="wrapper1">
+            <div class="wrapper2">
+                  <h3> Test pagina </h3>
+                  <div class="wrapper3">
+                       
+                  </div>
+            </div>
       </div>
 </body>
 </html>
