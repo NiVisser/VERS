@@ -1,55 +1,76 @@
 <?php
 include("../db/db_config.php");
 session_start();
+$error = false;
+?>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login pagina</title>
+    <link href="../style/css/login.css" rel="stylesheet">
+    <?php include 'config.php' ?>
+</head>
+<body>
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+<?php
+
+if(isset($_POST['username']) and isset($_POST['password'])) {
     // username and password sent from form
+    $myusername = stripslashes($_REQUEST['username']);
+    $mypassword = stripslashes($_REQUEST['password']);
 
-    $myusername = mysqli_real_escape_string($db,$_POST['username']);
-    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
+    $myusername = mysqli_real_escape_string($db,$myusername);
+    $mypassword = mysqli_real_escape_string($db,$mypassword);
 
     $sql = "SELECT Username FROM username WHERE Username = '$myusername' and Password = '$mypassword'";
     $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
 
-    $count = mysqli_num_rows($result);
+    $rows = mysqli_num_rows($result);
 
     // If result matched $myusername and $mypassword, table row must be 1 row
 
-    if($count == 1) {
-        session_register("myusername");
+    if($rows == 1) {
         $_SESSION['login_user'] = $myusername;
 
-        header("location: index.php");
+        header("location: ../index.php");
     }else {
-        $error = "Your Login Name or Password is invalid";
+        $myusername = '';
+        $mypassword = '';
+        $error = true;
     }
 }
 ?>
-<link href="../style/css/login.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="wrapper fadeInDown">
     <div class="fadeIn first">
         <img src="../style/images/images.png" id="icon" alt="User Icon" />
+        <h1>Login pagina</h1>
     </div>
 
     <div id="formContent">
         <!-- Login Form -->
-        <form method="post">
-            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+        <form action="" method="post">
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login" required>
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" required>
+            <input type="submit" class="fadeIn fourth btn btn-primary" value="Log In">
         </form>
+        <?php
+        if($error) {
+            echo '<div id="formError">
+                <p class="text-danger">Verkeerd wachtwoord of gebruikersnaam</p>
+            </div>';
+        }
+        if(isset($_SESSION['redirected']) and $_SESSION['redirected']) {
+            echo '<div id="formError">
+                    <p class="text-danger">Uw bent op deze pagina terecht gekomen, omdat u eerst ingelogd moet zijn om uw gekozen pagina te bezoeken.</p>
+                </div>';
+            session_destroy();
+        }
+        ?>
     </div>
-    <div id="formError">
-        <p class="text-danger"><?php if(isset($error)) {echo error;} ?></p>
-    </div>
+
 </div>
+</body>
+</html>
 
 
 

@@ -1,3 +1,4 @@
+<?php include 'db/verify.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
