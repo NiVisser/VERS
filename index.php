@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
       <?php
-            include 'config.php'
+            include 'template/config.php'
       ?>
       <title>Welcome at VERS</title>
       <link rel="stylesheet" href="./style/css/index.css">
+      <link rel="stylesheet" href="./style/css/master.css">
+
 </head>
 <body>
       <div class="container">
