@@ -29,12 +29,17 @@ print("confidence: " . $confidence);
 
 print("<br>");
 
-foreach ($members as $value) {
-    if ($confidence > 0.6) {
-        if ($value[0] == "Games" or $value[1] == "Games" and $value[0] == "Strips" or $value[1] == "Strips") {
-            if ($value[0] != "Strips" and $value[1] != "Strips")
-                print("Go read a strip");
+function give_advice($members, $confidence, $event_type_one, $event_type_two) {
+    $threshold = 0.6;
+    foreach ($members as $value) {
+        if ($confidence > $threshold) {
+            if ($value[0] == $event_type_one or $value[1] == $event_type_one and $value[0] == $event_type_two or $value[1] == $event_type_two) {
+                if ($value[0] != $event_type_two and $value[1] != $event_type_two)
+                    print("Go read " . $event_type_two);
+            }
         }
     }
 }
+
+give_advice($members, $confidence, "Games", "Strips");
 
