@@ -9,6 +9,16 @@ $members["member_7"] = array("Kunst", "Strips");
 $members["member_8"] = array("Kunst", "Films");
 
 
+function get_members($members) {
+    $i = 1;
+    foreach ($members as $value) {
+        print("member " . $i . ": " . $value[0] . ", " . $value[1]);
+        $i++;
+        print("<br/>");
+    }
+}
+
+
 function calculate_confidence($members, $event_type_one, $event_type_two) {
     $support_one_two = 0;
     $nr_of_event_one_types = 0;
@@ -25,8 +35,6 @@ function calculate_confidence($members, $event_type_one, $event_type_two) {
 
 
 $confidence = calculate_confidence($members, "Games", "Strips");
-print("confidence: " . $confidence);
-print("<br>");
 
 
 function give_advice($members, $confidence, $event_type_one, $event_type_two) {
@@ -35,7 +43,7 @@ function give_advice($members, $confidence, $event_type_one, $event_type_two) {
         if ($confidence > $threshold) {
             if ($value[0] == $event_type_one or $value[1] == $event_type_one and $value[0] == $event_type_two or $value[1] == $event_type_two) {
                 if ($value[0] != $event_type_two and $value[1] != $event_type_two)
-                    print("Go read " . $event_type_two);
+                    return $event_type_two;
             }
         }
     }
