@@ -23,11 +23,11 @@ function calculate_confidence($members, $event_type_one, $event_type_two) {
     return $support_one_two / $nr_of_event_one_types;
 }
 
+
 $confidence = calculate_confidence($members, "Games", "Strips");
-
 print("confidence: " . $confidence);
-
 print("<br>");
+
 
 function give_advice($members, $confidence, $event_type_one, $event_type_two) {
     $threshold = 0.6;
@@ -40,6 +40,7 @@ function give_advice($members, $confidence, $event_type_one, $event_type_two) {
         }
     }
 }
+
 
 give_advice($members, $confidence, "Games", "Strips");
 
