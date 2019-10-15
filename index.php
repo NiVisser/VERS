@@ -1,7 +1,7 @@
 <?php
 include 'db/verify.php';
 session_start();
-echo 'Welcome, ' . $_SESSION["login_user"];
+echo 'Welcome, ' . $_SESSION['username'];
 
 ?>
 <!DOCTYPE html>
@@ -23,12 +23,12 @@ echo 'Welcome, ' . $_SESSION["login_user"];
                         <i></i>
                   </label>
                   <div class="logo">
-                        <a href="homepage.html">VERS</a>
+                        <a href="index.php">VERS</a>
                   </div>
                   <div class="nav-wrapper">
                         <ul>
-                              <li><a href="homepage.html">Home</a></li>
-                              <li><a href="testpagina.html">Testpagina</a></li>
+                             <li><a href="homepage.html">Home</a></li>
+                             <li><a href="testpagina.html">Testpagina</a></li>
                         </ul>
                   </div>
             </nav>
@@ -37,7 +37,7 @@ echo 'Welcome, ' . $_SESSION["login_user"];
             <div class="wrapper2">
                   <h3> Test pagina </h3>
                   <div class="wrapper3">
-                       
+
                   </div>
             </div>
       </div>
