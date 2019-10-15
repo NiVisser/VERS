@@ -40,7 +40,6 @@ if(isset($_POST['submit'])) {
 
     $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '"1","' . $email . '",' .  $dob . "," . '"test.jpg"' . "," .  '"1"' . ")";
     //secho $user_add_query;
-    mysqli_query($db, $user_add_query);
     if ($db->query($user_add_query) === TRUE) {
     echo "New record created successfully";
 } else {

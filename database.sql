@@ -4,7 +4,11 @@ CREATE DATABASE IF NOT EXISTS vers;
 CREATE TABLE IF NOT EXISTS  Username (
     User_id int NOT NULL AUTO_INCREMENT,
     Username varchar(255) NOT NULL,
+    Password varchar(255) NOT NULL,
+    isAmbassador bit DEFAULT 0,
+    Email varchar(255),
     Dateofbirth DATETIME,
+    Picture varchar(255),
     Points int,
     PRIMARY KEY (User_id)
 );
@@ -26,6 +30,7 @@ CREATE TABLE IF NOT EXISTS  Events (
     Address varchar(500),
     Dates DATETIME,
     Event_type varchar(255),
+    Picture varchar(255),
     Price int,
     min_age int,	
     PRIMARY KEY (Event_id),
@@ -67,4 +72,3 @@ CREATE TABLE IF NOT EXISTS Answer (
     PRIMARY KEY (Answer_id),
     FOREIGN KEY (Question_id) REFERENCES Question(Question_id)
 );
-
