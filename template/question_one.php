@@ -1,6 +1,6 @@
 <?php
 include '../db/db_config.php';
-session_start();
+include '../db/verify_registration.php';
 ?>
 <html>
 <head>
@@ -8,36 +8,46 @@ session_start();
     <?php include 'config.php'; ?>
 </head>
 <?php
-if(isset($_POST['submit'])) {
-    $username = mysqli_real_escape_string($db, $_POST['name']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $date_of_birth = mysqli_real_escape_string($db, $_POST['date']);
-    $password = mysqli_real_escape_string($db, $_POST['password']);
+if(isset($_POST['answer'])) {
+    $answer = $_POST['answer'];
+    $answer = explode("_", $answer);
+    $question_number = $answer[1];
+    $answer = $answer[0];
+    $_SESSION['login_user'] = 'Jolijn';
+    $username = $_SESSION["login_user"];
 
-    $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
-    if ($db->query($user_check_query)->num_rows == 0) {
-        $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
-        if ($db->query($user_add_query) === TRUE) {
-            $_SESSION['name'] = $username;
-            $_SESSION["login_user"] = $username;
-            header("location: /index.php");
-        } else {
-            echo "Error: " . $user_add_query . "<br>" . $db->error;
-        }
+    $user_check_query = "SELECT Username FROM username WHERE Username='$username' LIMIT 1";
+    echo query($user_check_query);
+    if($db->query($user_check_query)->num_rows == 1) {
+
     }
-    else {
-        echo "
-            <br>
-            <div class='row'>
-                <div class='col-md-4 offset-md-4 align-self-center alert alert-warning'>
-                    Gebruiker: $username of <br> E-mail: $email bestaat al.
-                </div>
-            </div>
-         ";
-    }
+
+    // $answer_add_query = 'INSERT INTO answer (user_id, questionnumber, answer) VALUES ("'$username'")';
+
+
+//    $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
+//    if ($db->query($user_check_query)->num_rows == 0) {
+//        $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
+//        if ($db->query($user_add_query) === TRUE) {
+//            $_SESSION['name'] = $username;
+//            $_SESSION["login_user"] = $username;
+//            header("location: /index.php");
+//        } else {
+//            echo "Error: " . $user_add_query . "<br>" . $db->error;
+//        }
+//    }
+//    else {
+//        echo "
+//            <br>
+//            <div class='row'>
+//                <div class='col-md-4 offset-md-4 align-self-center alert alert-warning'>
+//                    Gebruiker: $username of <br> E-mail: $email bestaat al.
+//                </div>
+//            </div>
+//         ";
+//    }
 }
 ?>
-
 <body>
 <br>
 <div class="card mx-auto" style="width: 22rem;">
@@ -50,65 +60,49 @@ if(isset($_POST['submit'])) {
                 <br/>
                 <br/>
 <!--                <input class="button" type="button" id="button0" style="color:black; width:100px; height: 50px" margin: 20px/>-->
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="comics">
+                    <button type="submit" class="btn btn-secondary" value="Strips_1" name="answer">
                         Strips
                     </button>
-                </a>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="movies">
+
+                    <button type="submit" class="btn btn-secondary" value="Films_2" name="answer">
                         Films
                     </button>
-                </a>
             <br/>
             <br/>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="art">
+                    <button type="submit" class="btn btn-secondary" value="Kunst_3" name="answer">
                         Kunst
                     </button>
-                </a>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="sport">
+
+                    <button type="submit" class="btn btn-secondary" value="Sport_4" name="answer">
                         Sport
                     </button>
-                </a>
             <br/>
             <br/>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="drama">
+                    <button type="submit" class="btn btn-secondary" value="Theater_5" name="answer">
                         Theater
                     </button>
-                </a>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="music">
+
+                    <button type="submit" class="btn btn-secondary" value="Muziek_6" name="answer">
                         Muziek
                     </button>
-                </a>
             <br/>
             <br/>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="games">
-                        Games
-                    </button>
-                </a>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="literature">
-                        Literatuur
-                    </button>
-                </a>
+                <button type="submit" class="btn btn-secondary" value="Games_7" name="answer">
+                    Games
+                </button>
+
+                <button type="submit" class="btn btn-secondary" value="Literatuur_8" name="answer">
+                    Literatuur
+                </button>
             <br/>
             <br/>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="photo">
-                        Fotografie
-                    </button>
-                </a>
-                <a href="question_two.php">
-                    <button type="button" class="btn btn-secondary" name="unknown">
+                <button type="submit" class="btn btn-secondary" value="Fotografie_9" name="answer">
+                    Fotografie
+                </button>
+                <button type="submit" class="btn btn-secondary" value="Onbekend_10" name="answer">
                         Ik weet het niet
-                    </button>
-                </a>
-            <br/>
+                </button>
+                  <br/>
         </form>
         <br>
     </div>

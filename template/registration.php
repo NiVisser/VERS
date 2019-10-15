@@ -17,7 +17,7 @@ if(isset($_POST['submit'])) {
         if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
             $_SESSION["login_user"] = $username;
-            header("location: /index.php");
+            header("location: /question_one.php");
         } else {
             echo "Error: " . $user_add_query . "<br>" . $db->error;
         }
