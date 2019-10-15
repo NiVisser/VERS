@@ -16,17 +16,15 @@ if(isset($_POST['submit'])) {
     $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
-    
-
-    if($user) { //user exists
+    if(mysqli_num_rows($result) == 1) { //user exists
         if($user['Username'] === $username or $user['Email'] === $email) {
             echo 'Gebruiker bestaat al.';
             header("location: registration.php");
         }
         else {
             $user_add_query = "INSERT INTO username (Username, Password, Email, Dateofbirth, Picture, Points) 
-  			  VALUES('$username', '$password', '$email', $date_of_birth, '', 0)";
-            echo mysqli_query($db, $user_add_query);
+  			  VALUES('$username', '$password', '$email', '$date_of_birth', '-', 0)";
+            $result = mysqli_query($db, $user_add_query);
             $_SESSION['name'] = $username;
             header("location: ../index.php");
 
