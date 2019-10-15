@@ -2,51 +2,40 @@
 <html>
 <head>
     <?php include 'config.php'; ?>
+
 </head>
 <?php
 session_start();
 if(isset($_POST['submit'])) {
-   /*
-    var_dump($_POST['date'] . ' ' . gettype($_POST['date']));
     $username = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
-    $date_of_birth = date_create_from_format("d-m-Y h:i:s", $_POST['date']);
+    $date_of_birth = mysqli_real_escape_string($db, $_POST['date']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
-    $result = mysqli_query($db, $user_check_query);
-    $user = mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) == 1) { //user exists
-        if($user['Username'] === $username or $user['Email'] === $email) {
-            echo 'Gebruiker bestaat al.';
-            header("location: registration.php");
-        }
-        else {
-            $user_add_query = "INSERT INTO username (Username, Password, Email, Dateofbirth, Picture, Points) 
-  			  VALUES('$username', '$password', '$email', '$date_of_birth', '-', 0)";
-            $result = mysqli_query($db, $user_add_query);
+    if ($db->query($user_check_query)->num_rows == 0) {
+        $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
+        if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
-            header("location: ../index.php");
-
+            header("location: index.php");
+        } else {
+            echo "Error: " . $user_add_query . "<br>" . $db->error;
         }
     }
-    */
-    $username = $_POST['name'];
-    $dob = $_POST['date'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '"1","' . $email . '",' .  $dob . "," . '"test.jpg"' . "," .  '"1"' . ")";
-    //secho $user_add_query;
-    if ($db->query($user_add_query) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $user_add_query . "<br>" . $db->error;
-}
-
+    else {
+        echo "
+            <br>
+            <div class='row'>
+                <div class='col-md-4 offset-md-4 align-self-center alert alert-warning'>
+                    Gebruiker: $username of <br> E-mail: $email bestaat al.
+                </div>
+            </div>
+         ";
+    }
 }
 ?>
 <body>
+<br />
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
         <h5 class="card-title">Vers</h5>
@@ -54,21 +43,21 @@ if(isset($_POST['submit'])) {
         <form method="post">
             <div class="form-group">
                 <label for="name">Hoe heet je?</label>
-                <input class="form-control" name="name" value="naam">
+                <input class="form-control" name="name" placeholder="naam" required>
             </div>
 
             <div class="form-group">
                 <label for="date">Wanneer ben je jarig?</label>
-                <input type="date" class="form-control" name="date" value="24-11-1995">
+                <input type="date" class="form-control" name="date" placeholder="24-11-1995">
             </div>
 
             <div class="form-group">
                 <label for="email">Wat is je e-mailadres?</label>
-                <input type="email" class="form-control" name="email" value="afra@forumvers.nl">
+                <input type="email" class="form-control" name="email" placeholder="afra@forumvers.nl">
             </div>
             <div class="form-group">
                 <label for="password">Verzin een wachtwoord</label>
-                <input type="password" class="form-control" name="password" value="Fluitsnoepjes">
+                <input type="password" class="form-control" name="password" placeholder="Fluitsnoepjes" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
