@@ -8,69 +8,41 @@ $members["member_6"] = array("Kunst", "Strips");
 $members["member_7"] = array("Kunst", "Strips");
 $members["member_8"] = array("Kunst", "Films");
 
-//print_r($members);
-print("<br>");
 
-
-// def calculate_support
-$games = 0;
-$kunst = 0;
-$total = 0;
-$strips = 0;
-$event_type = 0;
-//function calculate_support($members, $total, $games, $kunst, $strips) {
-//    foreach ($members as $value) {
-//        $total += 1;
-//        if ($value[0] == "Games" or $value[1] == "Games") {
-//            $games += 1;
-//        }
-//        if ($value[0] == "Kunst" or $value[1] == "Kunst") {
-//            $kunst += 1;
-//        }
-//        if ($value[0] == "Strips" or $value[1] == "Strips") {
-//            $strips += 1;
-//        }
-//    }
-//}
-
-
-function calculate_support($members, $event_type) {
-    $total = 0;
-    $nr_of_event_types = 0;
+function calculate_confidence($members, $event_type_one, $event_type_two) {
+    $support_one_two = 0;
+    $nr_of_event_one_types = 0;
     foreach ($members as $value) {
-        $total += 1;
-        if ($value[0] == $event_type or $value[1] == $event_type) {
-            $nr_of_event_types += 1;
+        if ($value[0] == $event_type_one or $value[1] == $event_type_one) {
+            $nr_of_event_one_types += 1;
+        }
+        if ($value[0] == $event_type_one and $value[1] == $event_type_two or $value[0] == $event_type_two and $value[1] == $event_type_one) {
+            $support_one_two += 1;
         }
     }
-    return $nr_of_event_types / $total;
+    return $support_one_two / $nr_of_event_one_types;
 }
 
-calculate_support($members, "Games");
+$confidence = calculate_confidence($members, "Games", "Strips");
 
-//calculate_support($members, $total, $games, $kunst, $strips);
+print($confidence);
 
 
-//$support_games = $games / $total;
-//$support_strips = $strips / $total;
+    //$confidence = $support_games_strips / $games;
 
-//print("support: " . $support_games);
-//print("<br>");
-//print("support strips: " . $support_strips);
 
-// def calculate_confidence
-$support_games_strips = 0;
-foreach ($members as $value) {
-    $total += 1;
-    if ($value[0] == "Games" and $value[1] == "Strips" or $value[0] == "Strips" and $value[1] == "Games") {
-        $support_games_strips += 1;
-    }
-}
+//$support_games_strips = 0;
+//foreach ($members as $value) {
+//    $total += 1;
+//    if ($value[0] == "Games" and $value[1] == "Strips" or $value[0] == "Strips" and $value[1] == "Games") {
+//        $support_games_strips += 1;
+//    }
+//}
 
 $support_games_strips_lift = $support_games_strips / $total;
 
 
-//$confidence = $support_games_strips / $games;
+
 
 //print($support_games_strips);
 print("<br>");
