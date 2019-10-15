@@ -1,5 +1,5 @@
 <?php
-include 'db/verify.php';
+include '../db/verify.php';
 session_start();
 echo 'Welcome, ' . $_SESSION["login_user"];
 
@@ -9,7 +9,7 @@ echo 'Welcome, ' . $_SESSION["login_user"];
 <head>
     <?php
     include 'config.php';
-    include '../logic/MLAlgorithm.php'
+    include '../logic/MLAlgorithm.php';
     ?>
     <title>Welcome at VERS</title>
     <link rel="stylesheet" href="../style/css/index.css">
