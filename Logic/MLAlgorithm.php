@@ -25,38 +25,7 @@ function calculate_confidence($members, $event_type_one, $event_type_two) {
 
 $confidence = calculate_confidence($members, "Games", "Strips");
 
-print($confidence);
-
-
-    //$confidence = $support_games_strips / $games;
-
-
-//$support_games_strips = 0;
-//foreach ($members as $value) {
-//    $total += 1;
-//    if ($value[0] == "Games" and $value[1] == "Strips" or $value[0] == "Strips" and $value[1] == "Games") {
-//        $support_games_strips += 1;
-//    }
-//}
-
-$support_games_strips_lift = $support_games_strips / $total;
-
-
-
-
-//print($support_games_strips);
-print("<br>");
 print("confidence: " . $confidence);
-print("<br>");
-
-
-//$lift = $confidence / $support_strips;
-
-
-
-
-//print("lift: " . $lift);
-
 
 print("<br>");
 
