@@ -14,7 +14,7 @@ if(isset($_POST['go'])) {
     $answer = explode("_", $answer);
     $question_number = $answer[1];
     $answer = $answer[0];
-    header("location: /index.php");
+    header("location: dashboard.php");
 
 
 }
