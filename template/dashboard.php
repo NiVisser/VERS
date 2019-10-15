@@ -39,7 +39,7 @@
             $advice = give_advice($members, $confidence, "Games", "Strips");
             get_members($members);
             print("<br/>");
-            print("member 4, you would probably also like: " . $advice);
+            print("member 4, maybe you would also like: " . $advice);
             ?>
         </div>
     </div>
