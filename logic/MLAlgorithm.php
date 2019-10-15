@@ -35,7 +35,7 @@ function give_advice($members, $confidence, $event_type_one, $event_type_two) {
         if ($confidence > $threshold) {
             if ($value[0] == $event_type_one or $value[1] == $event_type_one and $value[0] == $event_type_two or $value[1] == $event_type_two) {
                 if ($value[0] != $event_type_two and $value[1] != $event_type_two)
-                    print("Go read " . $event_type_two);
+                    return $event_type_two;
             }
         }
     }

@@ -31,9 +31,8 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     // If result matched $myusername and $mypassword, table row must be 1 row
 
     if($rows == 1) {
-        $_SESSION['login_user'] = $myusername;
-
-        header("location: ../index.php");
+        $_SESSION["login_user"] = $myusername;
+        header("location: /index.php");
     }else {
         $myusername = '';
         $mypassword = '';
@@ -50,7 +49,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
         <form method="post">
             <div class="form-group">
                 <label for="name">Gebruikersnaam</label>
-                <input class="form-control fadeIn second" name="login" placeholder="naam" required>
+                <input class="form-control fadeIn second" name="username" placeholder="naam" required>
             </div>
             <div class="form-group">
                 <label for="password">Wachtwoord</label>

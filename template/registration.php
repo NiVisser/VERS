@@ -17,7 +17,8 @@ if(isset($_POST['submit'])) {
         $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
         if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
-            header("location: index.php");
+            $_SESSION["login_user"] = $username;
+            header("location: /index.php");
         } else {
             echo "Error: " . $user_add_query . "<br>" . $db->error;
         }

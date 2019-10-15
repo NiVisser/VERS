@@ -72,3 +72,4 @@ CREATE TABLE IF NOT EXISTS Answer (
     PRIMARY KEY (Answer_id),
     FOREIGN KEY (Question_id) REFERENCES Question(Question_id)
 );
+
