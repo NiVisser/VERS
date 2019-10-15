@@ -13,14 +13,16 @@ if(isset($_POST['answer'])) {
     $answer = explode("_", $answer);
     $question_number = $answer[1];
     $answer = $answer[0];
-    $_SESSION['login_user'] = 'Jolijn';
-    $username = $_SESSION["login_user"];
-
-    $user_check_query = "SELECT Username FROM username WHERE Username='$username' LIMIT 1";
-    echo query($user_check_query);
-    if($db->query($user_check_query)->num_rows == 1) {
-
-    }
+    header("location: question_two.php");
+}
+//    $_SESSION['login_user'] = 'Jolijn';
+//    $username = $_SESSION["login_user"];
+//
+//    $user_check_query = "SELECT Username FROM username WHERE Username='$username' LIMIT 1";
+//    echo query($user_check_query);
+//    if($db->query($user_check_query)->num_rows == 1) {
+//
+//    }
 
     // $answer_add_query = 'INSERT INTO answer (user_id, questionnumber, answer) VALUES ("'$username'")';
 
@@ -46,14 +48,14 @@ if(isset($_POST['answer'])) {
 //            </div>
 //         ";
 //    }
-}
+//}
 ?>
 <body>
 <br>
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
         <h5 class="card-title">Vers</h5>
-        <h6 class="card-subtitle mb-2 text-secondary">Stap 1/4</h6>
+        <h6 class="card-subtitle mb-2 text-secondary">Stap 2/4</h6>
         <form action="" method="post">
             <div class="form-group">
                 <label for="name">Welke categorieën vind je leuk?</label>

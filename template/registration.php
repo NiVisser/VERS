@@ -17,7 +17,7 @@ if(isset($_POST['submit'])) {
         if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
             $_SESSION["login_user"] = $username;
-            header("location: /question_one.php");
+            header("location: /template/question_one.php");
         } else {
             echo "Error: " . $user_add_query . "<br>" . $db->error;
         }
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])) {
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
         <h5 class="card-title">Vers</h5>
-        <h6 class="card-subtitle mb-2 text-secondary">Stap 3/4</h6>
+        <h6 class="card-subtitle mb-2 text-secondary">Stap 1/4</h6>
         <form method="post">
             <div class="form-group">
                 <label for="name">Hoe heet je?</label>

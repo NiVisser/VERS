@@ -1,6 +1,5 @@
 <?php
 include 'db/verify.php';
-session_start();
 echo 'Welcome, ' . $_SESSION["login_user"];
 
 ?>
