@@ -1,9 +1,3 @@
-<?php
-include '../db/verify.php';
-session_start();
-echo 'Welcome, ' . $_SESSION["login_user"];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,11 +37,13 @@ echo 'Welcome, ' . $_SESSION["login_user"];
             <?php
             $confidence = calculate_confidence($members, "Games", "Strips");
             $advice = give_advice($members, $confidence, "Games", "Strips");
-            print($advice);
+            get_members($members);
+            print("<br/>");
+            print("member 4, you would probably also like: " . $advice);
             ?>
         </div>
     </div>
 </div>
 </body>
 </html>
->>>>>>> master
+
