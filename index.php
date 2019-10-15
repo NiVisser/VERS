@@ -1,7 +1,7 @@
 <?php
 include 'db/verify.php';
 session_start();
-echo 'Welcome, ' . $_SESSION['username'];
+echo 'Welcome, ' . $_SESSION["login_user"];
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ echo 'Welcome, ' . $_SESSION['username'];
             <div class="wrapper2">
                   <h3> Test pagina </h3>
                   <div class="wrapper3">
-
+                       
                   </div>
             </div>
       </div>
