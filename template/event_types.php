@@ -1,6 +1,7 @@
 <?php include '../db/db_config.php'?>
 <html>
 <head>
+    <link href="../style/css/event_types.css" rel="stylesheet">
     <?php include 'config.php'; ?>
 </head>
 <?php
@@ -28,6 +29,7 @@ if(isset($_POST['name'])) {
             echo mysqli_query($db, $user_add_query);
             $_SESSION['name'] = $username;
             header("location: ../index.php");
+
         }
     }
 }
@@ -37,26 +39,54 @@ if(isset($_POST['name'])) {
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
         <h5 class="card-title">Vers</h5>
-        <h6 class="card-subtitle mb-2 text-secondary">Stap 3/4</h6>
+        <h6 class="card-subtitle mb-2 text-secondary">Stap 1/4</h6>
         <form action="" method="post">
             <div class="form-group">
-                <label for="name">Hoe heet je?</label>
-                <input class="form-control" id="name" placeholder="Wat is je naam?">
-            </div>
-
-            <div class="form-group">
-                <label for="date">Wanneer ben je jarig?</label>
-                <input type="date" class="form-control" id="date" placeholder="24-11-1995">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Wat is je e-mailadres?</label>
-                <input type="email" class="form-control" id="email" placeholder="afra@forumvers.nl">
-            </div>
-            <div class="form-group">
-                <label for="password">Verzin een wachtwoord</label>
-                <input type="password" class="form-control" id="password" placeholder="Bijv. Fluitsnoepjes">
-            </div>
+                <label for="name">Welke categorieën vind je leuk?</label>
+                <br/>
+                <br/>
+<!--                <input class="button" type="button" id="button0" style="color:black; width:100px; height: 50px" margin: 20px/>-->
+                <button type="button" class="btn btn-secondary">
+                Strips
+            </button>
+            <button type="button" class="btn btn-secondary">
+                Films
+            </button>
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-secondary">
+                Kunst
+            </button>
+            <button type="button" class="btn btn-secondary">
+                Sport
+            </button>
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-secondary">
+                Theater
+            </button>
+            <button type="button" class="btn btn-secondary">
+                Muziek
+            </button>
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-secondary">
+                Games
+            </button>
+            <button type="button" class="btn btn-secondary">
+                Literatuur
+            </button>
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-secondary">
+                Fotografie
+            </button>
+            <button type="button" class="btn btn-secondary">
+                Ik weet het niet
+            </button>
+            <br/>
+            <br/>
+                <br/>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
         <a href="#" class="card-link">< Terug</a>
