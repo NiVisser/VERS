@@ -15,9 +15,9 @@ $error = false;
 
 <?php
 
-if(isset($_POST['username']) and isset($_POST['password'])) {
+if(isset($_POST['login']) and isset($_POST['password'])) {
     // username and password sent from form
-    $myusername = stripslashes($_REQUEST['username']);
+    $myusername = stripslashes($_REQUEST['login']);
     $mypassword = stripslashes($_REQUEST['password']);
 
     $myusername = mysqli_real_escape_string($db,$myusername);
@@ -27,16 +27,12 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     $result = mysqli_query($db,$sql);
 
     $rows = mysqli_num_rows($result);
-
     // If result matched $myusername and $mypassword, table row must be 1 row
-
     if($rows == 1) {
         $_SESSION['login_user'] = $myusername;
 
         header("location: ../index.php");
     }else {
-        $myusername = '';
-        $mypassword = '';
         $error = true;
     }
 }
@@ -54,7 +50,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
             </div>
             <div class="form-group">
                 <label for="password">Wachtwoord</label>
-                <input class="form-control fadeIn third" name="password" placeholder="*******" required>
+                <input type="password" class="form-control fadeIn third" name="password" placeholder="*******" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             <?php

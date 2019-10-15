@@ -9,15 +9,16 @@ session_start();
 if(isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
-    $date_of_birth = mysqli_real_escape_string($db, $_POST['date']);
+    //$date_of_birth = date_create_from_format('d/m/Y:H:i:s', $_POST['date']);
+    $date_of_birth = $_POST['date'];
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
     $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
     if ($db->query($user_check_query)->num_rows == 0) {
         $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
         if ($db->query($user_add_query) === TRUE) {
-            $_SESSION['name'] = $username;
-            header("location: index.php");
+            $_SESSION['login_user'] = $username;
+            header("location: ../index.php");
         } else {
             echo "Error: " . $user_add_query . "<br>" . $db->error;
         }
