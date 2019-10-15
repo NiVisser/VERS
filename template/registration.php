@@ -11,9 +11,9 @@ if(isset($_POST['submit'])) {
     $date_of_birth = mysqli_real_escape_string($db, $_POST['date']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
+    $user_check_query = "SELECT username, email FROM users WHERE username='$username' OR email='$email' LIMIT 1";
     if ($db->query($user_check_query)->num_rows == 0) {
-        $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
+        $user_add_query = 'INSERT INTO users (username, password, is_ambassador, email, dateofbirth, picture, coins) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
         if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
             $_SESSION["login_user"] = $username;
