@@ -1,4 +1,9 @@
-<?php include 'db/verify.php' ?>
+<?php
+include 'db/verify.php';
+session_start();
+echo 'Welcome, ' . $_SESSION['username'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

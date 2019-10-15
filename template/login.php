@@ -66,8 +66,12 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
             session_destroy();
         }
         ?>
-    </div>
 
+    </div>
+    <div class="container">
+        <h3>Nog geen account bij Forum Groningen?</h3>
+        <a href="registration.php" class="text-muted"><button class="btn btn-secondary">Maak een account aan!</button></a>
+    </div>
 </div>
 </body>
 </html>
