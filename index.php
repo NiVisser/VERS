@@ -1,9 +1,13 @@
+<?php
+include 'db/verify.php';
+session_start();
+echo 'Welcome, ' . $_SESSION['username'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <?php
-            include 'template/config.php'
-      ?>
+      <?php include 'template/config.php'; ?>
       <title>Welcome at VERS</title>
       <link rel="stylesheet" href="./style/css/index.css">
       <link rel="stylesheet" href="./style/css/master.css">
