@@ -13,8 +13,14 @@ include '../db/verify_registration.php';
         <h5 class="card-title">Vers</h5>
         <h6 class="card-subtitle mb-2 text-secondary">Stap 4/4</h6>
         <div class="container">
-
+            <img src="../style/images/images.png" id="icon" alt="User Icon" />
+            <h6 class="card-subtitle mb-2 text-secondary"></h6>
+            <p class="small">Game wizard - Level 1</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
         </div>
+        <a href="/template/dashboard.php" class="btn btn-primary" role="button">Naar het dashboard</a>
     </div>
 </div>
 </body>
