@@ -15,9 +15,9 @@ $error = false;
 
 <?php
 
-if(isset($_POST['login']) and isset($_POST['password'])) {
+if(isset($_POST['username']) and isset($_POST['password'])) {
     // username and password sent from form
-    $myusername = stripslashes($_REQUEST['login']);
+    $myusername = stripslashes($_REQUEST['username']);
     $mypassword = stripslashes($_REQUEST['password']);
 
     $myusername = mysqli_real_escape_string($db,$myusername);
