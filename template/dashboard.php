@@ -43,7 +43,7 @@ include '../db/verify.php'
         <div class="col">
         </div>
         <div class="col">
-            <form class="form-inline">
+            <form class="form-inline" style="margin-left: 3em">
                 <div class="form-group">
                     <button type="submit" name="recommended" value="recommended" class="btn btn-primary">Aanbevelingen</button>
                 </div>
@@ -56,33 +56,40 @@ include '../db/verify.php'
         </div>
     </div>
 </div>
+<hr>
 
-            <?php
-            $confidence = calculate_confidence($member_list, "games", "strips");
-            $advice = give_advice($member_list, $confidence, "games", "strips");
-            get_members($member_list);
-            print("<br/>");
-            print("member 4, maybe you would also like: " . $advice);
-            print("<br/>");
-            $event = $member_list[3][0];
+<?php
+if(isset($_GET['recommended'])) {
+    include '../functions/recommended.php';
+}
 
-
-            $t = $db->query("SELECT * FROM events WHERE event_type = 'Muziek'");
-            print_r($t['event_name']);
+if(isset($_GET['suggestion'])) {
+    echo 'suggesties plz';
+}
 
 
-            members_events($db, $users);
-//            print_r($member_list);
-            ?>
-        </div>
-        <div class="col">
-        </div>
-    </div>
-</div>
-
+?>
 </body>
 </html>
 
+
+<!--            --><?php
+//            $confidence = calculate_confidence($member_list, "games", "strips");
+//            $advice = give_advice($member_list, $confidence, "games", "strips");
+//            get_members($member_list);
+//            print("<br/>");
+//            print("member 4, maybe you would also like: " . $advice);
+//            print("<br/>");
+//            $event = $member_list[3][0];
+//
+//
+//            $t = $db->query("SELECT * FROM events WHERE event_type = 'Muziek'");
+//            print_r($t['event_name']);
+//
+//
+//            members_events($db, $users);
+////            print_r($member_list);
+?>
 
 <?php
 //$confidence = calculate_confidence($member_list, "games", "strips");

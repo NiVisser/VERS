@@ -23,14 +23,14 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     $myusername = mysqli_real_escape_string($db,$myusername);
     $mypassword = mysqli_real_escape_string($db,$mypassword);
 
-    $sql = "SELECT username, password FROM users WHERE Username = '$myusername' and Password = '$mypassword'";
+    $sql = "SELECT username, password FROM users WHERE username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($db,$sql);
 
     $rows = mysqli_num_rows($result);
     // If result matched $myusername and $mypassword, table row must be 1 row
     if($rows == 1) {
         $_SESSION["login_user"] = $myusername;
-        header("location: /index.php");
+        header("location: dashboard.php");
     }else {
         $error = true;
     }
@@ -51,7 +51,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
                 <label for="password">Wachtwoord</label>
                 <input type="password" class="form-control fadeIn third" name="password" placeholder="*******" required>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Inloggen</button>
             <?php
             if($error) {
                 echo '<div id="alert alert-primary">Verkeerd wachtwoord of gebruikersnaam</div>';
