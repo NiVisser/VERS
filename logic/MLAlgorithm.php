@@ -67,7 +67,11 @@ $confidence = calculate_confidence($member_list, "games", "strips");
 
 
 function give_advice($member_list, $confidence, $event_type_one, $event_type_two) {
+    $friends = 50;
     $threshold = 0.6;
+    if ($friends >= 50) {
+        $threshold += 0.2;
+    }
     foreach ($member_list as $value) {
         if ($confidence > $threshold) {
             if ($value[0] == $event_type_one or $value[1] == $event_type_one and $value[0] == $event_type_two or $value[1] == $event_type_two) {

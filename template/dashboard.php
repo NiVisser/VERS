@@ -4,6 +4,7 @@
     <?php
     include 'config.php';
     include '../logic/MLAlgorithm.php';
+    include '../db/db_config.php'
     ?>
     <title>Welcome at VERS</title>
     <link rel="stylesheet" href="../style/css/index.css">
@@ -41,6 +42,13 @@
             print("<br/>");
             print("member 4, maybe you would also like: " . $advice);
             print("<br/>");
+            $event = $member_list[3][0];
+
+
+            $t = $db->query("SELECT * FROM events WHERE event_type = 'Muziek'");
+            print_r($t['event_name']);
+
+
             members_events($db, $users);
 //            print_r($member_list);
             ?>
