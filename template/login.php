@@ -39,7 +39,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
 <br>
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body fadeIn first">
-        <h5 class="card-title">Vers</h5>
+        <h5 class="card-title">Vers : Inloggen</h5>
         <img src="../style/images/images.png" id="icon" alt="User Icon" />
         <h6 class="card-subtitle mb-2 text-secondary">Login pagina</h6>
         <form method="post">
