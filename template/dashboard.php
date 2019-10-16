@@ -73,7 +73,7 @@ if(isset($_GET['suggestion'])) {
 </html>
 
 
-<!--            --><?php
+<?php
 //            $confidence = calculate_confidence($member_list, "games", "strips");
 //            $advice = give_advice($member_list, $confidence, "games", "strips");
 //            get_members($member_list);
@@ -81,14 +81,14 @@ if(isset($_GET['suggestion'])) {
 //            print("member 4, maybe you would also like: " . $advice);
 //            print("<br/>");
 //            $event = $member_list[3][0];
-//
-//
+
+
 //            $t = $db->query("SELECT * FROM events WHERE event_type = 'Muziek'");
 //            print_r($t['event_name']);
-//
-//
+
+
 //            members_events($db, $users);
-////            print_r($member_list);
+//            print_r($member_list);
 ?>
 
 <?php
@@ -99,6 +99,6 @@ if(isset($_GET['suggestion'])) {
 //print("member 4, maybe you would also like: " . $advice);
 //print("<br/>");
 //members_events($db, $users);
-////            print_r($member_list);
+//            print_r($member_list);
 ?>
 

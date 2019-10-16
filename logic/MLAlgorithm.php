@@ -49,6 +49,7 @@ function get_members($member_list) {
 
 
 function calculate_confidence($member_list, $event_type_one, $event_type_two) {
+    $friends = 50;
     $support_one_two = 0;
     $nr_of_event_one_types = 0;
     foreach ($member_list as $value) {
@@ -59,7 +60,11 @@ function calculate_confidence($member_list, $event_type_one, $event_type_two) {
             $support_one_two += 1;
         }
     }
-    return $support_one_two / $nr_of_event_one_types;
+    if ($friends < 50) {
+        return $support_one_two / $nr_of_event_one_types;
+    } else {
+        return ($support_one_two / $nr_of_event_one_types) + 0.1;
+    }
 }
 
 
@@ -67,11 +72,7 @@ $confidence = calculate_confidence($member_list, "games", "strips");
 
 
 function give_advice($member_list, $confidence, $event_type_one, $event_type_two) {
-    $friends = 50;
-    $threshold = 0.6;
-    if ($friends >= 50) {
-        $threshold += 0.2;
-    }
+    $threshold = 0.8;
     foreach ($member_list as $value) {
         if ($confidence > $threshold) {
             if ($value[0] == $event_type_one or $value[1] == $event_type_one and $value[0] == $event_type_two or $value[1] == $event_type_two) {
