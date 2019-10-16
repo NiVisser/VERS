@@ -11,77 +11,30 @@ $members["member_6"] = array("Kunst", "Strips");
 $members["member_7"] = array("Kunst", "Strips");
 $members["member_8"] = array("Kunst", "Films");
 
+$res = $db->query("SELECT COUNT(user_id) FROM users");
+$user_row = $res->fetch_row();
+$users = $user_row[0];
 
-$member_list = array();
-for ($i = 1; $i <= 5; $i++) {
-    $test = "SELECT answer_id, user_id, answer FROM answers WHERE user_id='$i'";
-    $result = mysqli_query($db, $test);
+function members_events($db, $users) {
+    $member_list = array();
+    for ($i = 1; $i <= $users; $i++) {
+        $test = "SELECT answer_id, user_id, answer FROM answers WHERE user_id='$i'";
+        $result = mysqli_query($db, $test);
 
-    while($row = $result->fetch_assoc()) {
-        if (empty($member_list[$row["user_id"]])) {
-            $member_list[$row["user_id"]] = array($row["answer"]);
-        } else {
-            array_push($member_list[$row["user_id"]], $row["answer"]);
+        while($row = $result->fetch_assoc()) {
+            if (empty($member_list[$row["user_id"]])) {
+                $member_list[$row["user_id"]] = array($row["answer"]);
+            } else {
+                array_push($member_list[$row["user_id"]], $row["answer"]);
+            }
         }
     }
+    print_r($member_list);
 }
 
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-print("<br/>");
-
-//$i = 1;
-//$test = "SELECT answer_id, user_id, answer FROM answers WHERE user_id='$i'";
-//$result = mysqli_query($db, $test);
-//$member_list = array();
-//
-//while($row = $result->fetch_assoc()) {
-//    if ($member_list == array()) {
-//        $member_list[$row["user_id"]] = array($row["answer"]);
-//    } else {
-//        array_push($member_list[$row["user_id"]], $row["answer"]);
-//    }
-//}
-//    array_push($member_list, $row["answer"][1]);
-//    array_push($member_list, $row["answer"]);
-//    echo $row["user_id"] . " - " . $row["answer"] . "<br>";
-//    array_push($member_list["user_id"], $row["answer"]);
+//members_events($db);
 
 
-print_r($member_list);
-print("<br/>");
-print_r($members);
-
-//print_r($result);
 
 function get_members($members) {
     $i = 1;

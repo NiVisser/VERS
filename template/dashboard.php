@@ -40,6 +40,8 @@
             get_members($members);
             print("<br/>");
             print("member 4, maybe you would also like: " . $advice);
+            print("<br/>");
+            members_events($db, $users);
             ?>
         </div>
     </div>
