@@ -8,7 +8,6 @@ session_start();
 if(isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
-    //$date_of_birth = date_create_from_format('d/m/Y:H:i:s', $_POST['date']);
     $date_of_birth = $_POST['date'];
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -39,7 +38,7 @@ if(isset($_POST['submit'])) {
 <br />
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
-        <h5 class="card-title">Vers</h5>
+        <h5 class="card-title">Vers : Vul je gegevens in!</h5>
         <h6 class="card-subtitle mb-2 text-secondary">Stap 1/4</h6>
         <form method="post">
             <div class="form-group">

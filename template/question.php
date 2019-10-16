@@ -34,14 +34,14 @@ if(isset($_POST['answers'])) {
 ?>
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
-        <h5 class="card-title">Vers</h5>
+        <h5 class="card-title">Vers : Welke categorieën vind je het leukst?</h5>
         <h6 class="card-subtitle mb-2 text-secondary">Stap 2/3</h6>
         <form id="form-id" style="margin-left: 20px;" action="" method="post">
             <div class="row">
-                <div class="col">
+                <div class="col-md-6">
                     <input type="checkbox" id="strips_check" class="form-check-input" name="answers[]" value="strips_1">Strips
                 </div>
-                <div class="col">
+                <div class="col-md-6">
                     <input type="checkbox" id="film_check" class="form-check-input" name="answers[]" value="films_2">Films
                 </div>
             </div>
