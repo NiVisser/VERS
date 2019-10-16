@@ -1,8 +1,3 @@
-<?php
-include 'db/verify.php';
-echo 'Welcome, ' . $_SESSION["login_user"];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
