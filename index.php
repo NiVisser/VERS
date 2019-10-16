@@ -1,9 +1,3 @@
-<?php
-include 'db/verify.php';
-session_start();
-echo 'Welcome, ' . $_SESSION["login_user"];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +21,8 @@ echo 'Welcome, ' . $_SESSION["login_user"];
                   </div>
                   <div class="nav-wrapper">
                         <ul>
-                             <li><a href="homepage.html">Home</a></li>
-                             <li><a href="testpagina.html">Testpagina</a></li>
+                              <li><a href="homepage.html">Home</a></li>
+                              <li><a href="testpagina.html">Testpagina</a></li>
                         </ul>
                   </div>
             </nav>

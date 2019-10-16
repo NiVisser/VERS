@@ -1,9 +1,12 @@
+<?php
+include '../logic/MLAlgorithm.php';
+include '../db/verify.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php
     include 'config.php';
-    include '../logic/MLAlgorithm.php';
     ?>
     <title>Welcome at VERS</title>
     <link rel="stylesheet" href="../style/css/index.css">

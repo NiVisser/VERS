@@ -23,7 +23,7 @@ if(isset($_POST['login']) and isset($_POST['password'])) {
     $myusername = mysqli_real_escape_string($db,$myusername);
     $mypassword = mysqli_real_escape_string($db,$mypassword);
 
-    $sql = "SELECT Username FROM username WHERE Username = '$myusername' and Password = '$mypassword'";
+    $sql = "SELECT username, password FROM users WHERE Username = '$myusername' and Password = '$mypassword'";
     $result = mysqli_query($db,$sql);
 
     $rows = mysqli_num_rows($result);
