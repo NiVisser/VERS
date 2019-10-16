@@ -2,23 +2,22 @@
 <html>
 <head>
     <?php include 'config.php'; ?>
-
 </head>
 <?php
 session_start();
 if(isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($db, $_POST['name']);
     $email = mysqli_real_escape_string($db, $_POST['email']);
-    $date_of_birth = mysqli_real_escape_string($db, $_POST['date']);
+    $date_of_birth = $_POST['date'];
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    $user_check_query = "SELECT Username, Email FROM username WHERE Username='$username' OR Email='$email' LIMIT 1";
-    if ($db->query($user_check_query)->num_rows == 0) {
-        $user_add_query = 'INSERT INTO Username (Username, Password, isAmbassador, Email, Dateofbirth, Picture, Points) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
+    $user_id_query = "SELECT username, email FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+    if ($db->query($user_id_query)->num_rows == 0) {
+        $user_add_query = 'INSERT INTO users (username, password, is_ambassador, email, dateofbirth, picture, coins) VALUES ("' . $username . '","' . $password . '",'. '0,"' . $email . '",' .  $date_of_birth . "," . '"test.jpg"' . "," .  '0' . ")";
         if ($db->query($user_add_query) === TRUE) {
             $_SESSION['name'] = $username;
             $_SESSION["login_user"] = $username;
-            header("location: /index.php");
+            header("location: /template/question.php");
         } else {
             echo "Error: " . $user_add_query . "<br>" . $db->error;
         }
@@ -39,8 +38,8 @@ if(isset($_POST['submit'])) {
 <br />
 <div class="card mx-auto" style="width: 22rem;">
     <div class="card-body">
-        <h5 class="card-title">Vers</h5>
-        <h6 class="card-subtitle mb-2 text-secondary">Stap 3/4</h6>
+        <h5 class="card-title">Vers : Vul je gegevens in!</h5>
+        <h6 class="card-subtitle mb-2 text-secondary">Stap 1/4</h6>
         <form method="post">
             <div class="form-group">
                 <label for="name">Hoe heet je?</label>

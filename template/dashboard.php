@@ -1,40 +1,62 @@
+<?php
+include '../logic/MLAlgorithm.php';
+include '../db/verify.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php
     include 'config.php';
-    include '../logic/MLAlgorithm.php';
-    include '../db/db_config.php'
     ?>
     <title>Welcome at VERS</title>
-    <link rel="stylesheet" href="../style/css/index.css">
     <link rel="stylesheet" href="../style/css/master.css">
 
 </head>
 <body>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/template/logout.php">Uitloggen</a>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/template/logout.php">Uitloggen</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Hallo, <?php echo $_SESSION['login_user']; ?></h1>
+        <p class="lead text-muted">Vandaag zijn er weer verschillende Aanbevelingen & Ontdekking voor je beschikbaar!</p>
+    </div>
+</section>
+
+
 <div class="container">
-    <nav>
-        <input type="checkbox" id="nav" class="hidden">
-        <label for="nav" class="nav-btn">
-            <i></i>
-            <i></i>
-            <i></i>
-        </label>
-        <div class="logo">
-            <a href="homepage.html">VERS</a>
+    <div class="row">
+        <div class="col">
         </div>
-        <div class="nav-wrapper">
-            <ul>
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="testpagina.html">Testpagina</a></li>
-            </ul>
+        <div class="col">
+            <form class="form-inline">
+                <div class="form-group">
+                    <button type="submit" name="recommended" value="recommended" class="btn btn-primary">Aanbevelingen</button>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="suggestion" value="suggestion" class="btn btn-primary">Ontdek iets nieuws</button>
+                </div>
+            </form>
         </div>
-    </nav>
+        <div class="col">
+        </div>
+    </div>
 </div>
-<div class="wrapper1">
-    <div class="wrapper2">
-        <h3> Test pagina </h3>
-        <div class="wrapper3">
+
             <?php
             $confidence = calculate_confidence($member_list, "games", "strips");
             $advice = give_advice($member_list, $confidence, "games", "strips");
@@ -53,8 +75,23 @@
 //            print_r($member_list);
             ?>
         </div>
+        <div class="col">
+        </div>
     </div>
 </div>
+
 </body>
 </html>
+
+
+<?php
+//$confidence = calculate_confidence($member_list, "games", "strips");
+//$advice = give_advice($member_list, $confidence, "games", "strips");
+//get_members($member_list);
+//print("<br/>");
+//print("member 4, maybe you would also like: " . $advice);
+//print("<br/>");
+//members_events($db, $users);
+////            print_r($member_list);
+?>
 
