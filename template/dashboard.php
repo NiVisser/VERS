@@ -38,11 +38,14 @@ include '../db/verify.php'
         <h3> Test pagina </h3>
         <div class="wrapper3">
             <?php
-            $confidence = calculate_confidence($members, "Games", "Strips");
-            $advice = give_advice($members, $confidence, "Games", "Strips");
-            get_members($members);
+            $confidence = calculate_confidence($member_list, "games", "strips");
+            $advice = give_advice($member_list, $confidence, "games", "strips");
+            get_members($member_list);
             print("<br/>");
-            print("member 4, you would probably also like: " . $advice);
+            print("member 4, maybe you would also like: " . $advice);
+            print("<br/>");
+            members_events($db, $users);
+//            print_r($member_list);
             ?>
         </div>
     </div>
